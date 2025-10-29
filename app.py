@@ -54,6 +54,31 @@ search_movies() """
     print(movie_results)
 genre_search() """
 
-def titles(data):
+#Practice
+
+""" def titles(data):
     for d in data:
-    
+        print(d["title"])
+titles(data) """
+
+""" def after_year(data):
+    year = int(input("Give me a year and I will print movies released after that year: "))
+    for d in data:
+        if (d["year"]) > year:
+            print(f'{d["title"]} ({d["year"]})')
+after_year(data) """
+
+""" def after_year(data):
+    year = int(input("Give me a year and I will print all movies released after that year: "))
+    for d in data:
+        if int(d["year"]) > year:
+            print(f'{d["title"]} ({d["year"]})')
+after_year(data) """
+
+def before_and_after_year(data):
+    after_year = int(input("Give me a year and I will print movies released after that year: "))
+    before_year = int(input("Give me a year and I will print movies released before that year: "))
+    for d in data:
+        if int(d["year"]) > before_year and int(d["year"]) < after_year:
+            print(f'{d["title"]} ({d["year"]})')
+before_and_after_year(data)
