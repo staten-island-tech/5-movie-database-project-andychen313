@@ -48,9 +48,12 @@ search_movies() """
 
 #File Six
 
-def genre_search():
+""" def genre_search():
     search = input("What genre of movies are you trying to find?: ").lower()
     movie_results = [d for d in data if any(search in g.lower() for g in d["genres"])]
     print(movie_results)
-genre_search()
+genre_search() """
 
+def titles(data):
+    for d in data:
+    
