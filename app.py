@@ -40,19 +40,17 @@ during_year(data) """
 
 #File Five
 
-def search(data):
-    find = input("What movie(s) are you searching for?: ")
-    title = [data['title']]
-    for movie in data:
-        if find == title:
-            print(title)
-search(data)
+""" def search_movies():
+    search = input("What movie are you trying to find?: ").lower()
+    movie_results = [d for d in data if search in d["title"].lower()]
+    print(movie_results)
+search_movies() """
 
 #File Six
 
-""" def genre_search(data):
-    genre_list = [data["genres"]]
-    movie = input("Give me a genre to search for movies of the same genre: ")
-    for movie in data:
-        for movie in genre  """
+def genre_search():
+    search = input("What genre of movies are you trying to find?: ").lower()
+    movie_results = [d for d in data if any(search in g.lower() for g in d["genres"])]
+    print(movie_results)
+genre_search()
 
