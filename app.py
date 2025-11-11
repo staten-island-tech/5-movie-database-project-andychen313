@@ -14,21 +14,65 @@ titles(data) """
 #File Two
 
 """ def after_year(data):
-    year = int(input("Give me a year and I will print all movies released after that year: "))
+    years = [int(d["year"]) for d in data]
+    year = input("Give me a year and I will print all movies released after that year: ")
+    while not year.isnumeric() or int(year) not in years:
+        print("Invalid year. Please enter an appropriate year that accomodates the movie.")
+        year = int(input("Please enter an appropriate year that accomodates with the movie: "))
+    year = int(year)
     for d in data:
         if int(d["year"]) > year:
-            print(f'{d["title"]} ({d["year"]})')
+            print(f"{d['title']} ({d['year']})")
 after_year(data) """
 
 #File Three
 
-""" def before_year(data):
-    year = int(input("Give me a year and I will pritn all movies released before that year: "))
-    for d in data:
-        if int(d["year"]) < year:
-            print(f'{d["title"]} ({d["year"]})')
-before_year(data) """
+""" def before_and_after_year(data):
+    years = [int(d["year"]) for d in data]
+    year_start = input("Enter the year you want your movies to be released after: ")
+    year_end = input("Enter the year you want your movies to be released before: ")
+    while (not year_start.isnumeric() or not year_end.isnumeric()) or (int(year_start) not in years or int(year_end) not in years):
+        print("Invalid year(s). Please enter an appropriate year that accomodates the movie.")
+        year_start = input("Enter the year you want your movies to be released after: ")
+        year_end = input("Enter the year you want your movies to be released before: ")
+    year_start = int(year_start)
+    year_end = int(year_end)
+    matching_movies = [d for d in data if year_start < int(d["year"]) < year_end]
+    if matching_movies:
+        for d in matching_movies:
+            print(f"{d['title']} ({d['year']})")
+    else:
+        print("No movies found.")
+before_and_after_year(data)
+ """
+def before_and_after_year(data):
+    years = [int(d["year"]) for d in data]
+    
+    year_start = input("Enter the year you wnat your movies to be released after: ")
+    year_end = input("Enter the year you want your movies to be released before: ")
 
+    while True:
+        if not (year_start.isnumeric() and year_end.isnumeric()):
+            print("Invalid year(s). Please enter appropriate years.")
+        elif int(year_start) not in years or int(year_end) not in years:
+            print("Invalid year(s). Please enter appropriate years.")
+        else:
+            break
+
+        year_start = input("Enter the year you want your movies to be released after: ")
+        year_end = input("Enter the year you want your movies to be released before: ")
+
+    year_start = int(year_start)
+    year_end = int(year_end)
+
+    matching_movies = [d for d in data if year_start < int(d["year"]) < year_end]
+    
+    if matching_movies:
+        for d in matching_movies:
+            print(f"{d['title']} ({d['year']})")
+    else:
+        print("No movies found.")
+before_and_after_year(data)
 #File Four
 
 """ def during_year(data):
@@ -36,8 +80,8 @@ before_year(data) """
     for d in data:
         if d["year"] == year:
             print(f'{d["title"]} ({d["year"]})')
-during_year(data) """
-
+during_year(data)
+ """
 #File Five
 
 """ def search_movies():
@@ -75,10 +119,3 @@ after_year(data) """
             print(f'{d["title"]} ({d["year"]})')
 after_year(data) """
 
-def before_and_after_year(data):
-    after_year = int(input("Give me a year and I will print movies released after that year: "))
-    before_year = int(input("Give me a year and I will print movies released before that year: "))
-    for d in data:
-        if int(d["year"]) > before_year and int(d["year"]) < after_year:
-            print(f'{d["title"]} ({d["year"]})')
-before_and_after_year(data)
