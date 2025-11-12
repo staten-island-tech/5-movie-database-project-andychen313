@@ -115,3 +115,11 @@ if matches:
 else:
     print("No movies found. Please try again using the full word(s) of the genres your looking for.") """
 
+def genre_search():
+    search = input("What genre of movies are you trying to find?: ").lower()
+    if not search:
+        print("Please enter a genre or genres.")
+    for d in data:
+        if search in d["genres"].lower():
+            print(d['title'] (d['genres']))
+
