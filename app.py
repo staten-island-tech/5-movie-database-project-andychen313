@@ -98,6 +98,7 @@ else:
     print("No movies found.") """
 
 #File Six
+
 """ def genre_search(genre):
     results = []
     for d in data:
@@ -112,26 +113,5 @@ if matches:
     for m in matches:
         print(f"{m['title']} ({m['year']}) - ({m['genres']})")
 else:
-    print("No movies found. Please try again using the full word(s) of the genres your looking for.")
- """
-#Practice
-
-""" def titles(data):
-    for d in data:
-        print(d["title"])
-titles(data) """
-
-""" def after_year(data):
-    year = int(input("Give me a year and I will print movies released after that year: "))
-    for d in data:
-        if (d["year"]) > year:
-            print(f'{d["title"]} ({d["year"]})')
-after_year(data) """
-
-""" def after_year(data):
-    year = int(input("Give me a year and I will print all movies released after that year: "))
-    for d in data:
-        if int(d["year"]) > year:
-            print(f'{d["title"]} ({d["year"]})')
-after_year(data) """
+    print("No movies found. Please try again using the full word(s) of the genres your looking for.") """
 
