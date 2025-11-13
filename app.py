@@ -26,100 +26,66 @@ titles(data) """
 after_year(data) """
 
 #File Three
+
 """ def before_and_after_year(data):
     years = [int(d["year"]) for d in data]
+
+    year_start = int(input("Enter the year you want your movies to be released after: "))
+    year_end = int(input("Enter the year you want your movies to be released before: "))
+
+    if year_start not in years or year_end not in years:
+        print("Please enter appropriate years.")
+        return
     
-    year_start = input("Enter the year you wnat your movies to be released after: ")
-    year_end = input("Enter the year you want your movies to be released before: ")
-
-    while True:
-        if not (year_start.isnumeric() and year_end.isnumeric()):
-            print("Invalid year(s). Please enter appropriate years.")
-        elif int(year_start) not in years or int(year_end) not in years:
-            print("Invalid year(s). Please enter appropriate years.")
-        else:
-            break
-
-        year_start = input("Enter the year you want your movies to be released after: ")
-        year_end = input("Enter the year you want your movies to be released before: ")
-
-    year_start = int(year_start)
-    year_end = int(year_end)
-
-    matching_movies = [d for d in data if year_start < int(d["year"]) < year_end]
-    
-    if matching_movies:
-        for d in matching_movies:
+    for d in data:
+        year = int(d["year"])
+        if year_start < year < year_end:
             print(f"{d['title']} ({d['year']})")
-    else:
-        print("No movies found.")
 before_and_after_year(data) """
 
 #File Four
 
 """ def during_year(data):
     years = [int(d['year']) for d in data]
-    year = input("Enter a year and I will print all movies that were released in that year: ")
-    while True:
-        if not year.isnumeric():
-            print("Invalid year. Please enter an appropriate year that you want your movie(s) to accomodate.")
-        elif int(year) not in years:
-            print("Invalid year. Please enter an appropriate year that you want your movie(s) to accomodate.")
-        else:
-            break
-        year = input("Enter a year and I will print all movies that were released in that year: ")
-    year = int(year)
-
-    matching_movies = [d for d in data if year == int(d["year"])]
-
-    if matching_movies:
-        for d in matching_movies:
-            print(f'{d["title"]} ({d["year"]})')
-    else:
-        print("No movies found")
+    user_year = (input("Enter a year and I will print all movies that were released in that year: "))
+    user_year = int(user_year)
+    if user_year not in years:
+        print("Please enter appropriate years.")
+        return
+    
+    for d in data:
+        movie_year = int(d["year"])
+        if movie_year == user_year:
+            print(f"{d['title']} ({d['year']})")
 during_year(data) """
 
 #File Five
 
-""" def search_movies(title):
-    results = []
+""" def search_movies():
+    search = input("What movie are you trying to find?: ").lower()
+    found = False
+    
     for d in data:
-        if title.lower() in d["title"].lower():
-            results.append(d)
-    return results
+        title = d["title"].lower()
 
-search = input("What movie are you trying to find?: ").lower()
-matches = search_movies(search)
-
-if matches:
-    for m in matches:
-        print(f"{m['title']} ({m['year']}) - ({m['genres']})")
-else:
-    print("No movies found.") """
+        if search in title:
+            print(f"{d['title']} ({d['year']})")
+            found = True
+    if not found:
+        print("Please try again, but be more specific.")
+search_movies() """
 
 #File Six
 
-""" def genre_search(genre):
-    results = []
+""" def genre_search():
+    search = input("What genre(s) of movies are you trying to find?: ").lower()
+    found = False
+
     for d in data:
-        if any(genre.lower() in g.lower() for g in d["genres"]):
-            results.append(d)
-    return results
-    
-search = input("What genre of movies are you trying to find?: ").lower()
-matches = genre_search(search)
-
-if matches:
-    for m in matches:
-        print(f"{m['title']} ({m['year']}) - ({m['genres']})")
-else:
-    print("No movies found. Please try again using the full word(s) of the genres your looking for.") """
-
-def genre_search():
-    search = input("What genre of movies are you trying to find?: ").lower()
-    if not search:
-        print("Please enter a genre or genres.")
-    for d in data:
-        if search in d["genres"].lower():
-            print(d['title'] (d['genres']))
-
+        for g in d['genres']:
+            if search in g.lower():
+                print(f"{d['title']} ({d['year']}) - {d['genres']}")
+                found = True
+    if not found:
+        print("Please try again, but be more specific.")
+genre_search() """
